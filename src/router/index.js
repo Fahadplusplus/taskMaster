@@ -5,6 +5,7 @@ import LogIn from '@/components/LogIn.vue'
 import home from '@/components/home.vue'
 import navbar from '@/components/navbar.vue'
 import Setting from '@/components/Setting.vue'
+import modal from '@/components/modal.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -14,6 +15,7 @@ const router = createRouter({
     { path: '/home', name: 'home',component: home,},
     { path: '/navbar', name: 'navbar',component: navbar,},
     { path: '/Setting', name: 'setting',component: Setting,},
+    { path: '/modal', name: 'modal',component: modal,},
     
 
    { path: '/:pathMatch(.*)*', name: 'notfound', component: NotFound },

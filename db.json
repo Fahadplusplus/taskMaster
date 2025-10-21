@@ -6,7 +6,22 @@
       "email": "fahad@gmail.com",
       "password": "12345"
     }
-   
+  ],
+  "projects": [
+    {
+      "id": "cf3c",
+      "name": "fahad",
+      "Description": "hello"
+    },
+    {
+      "id": "3e24",
+      "name": "hassan",
+      "Description": "bye bye"
+    },
+    {
+      "id": "2696",
+      "name": "Project 3",
+      "Description": "loram ipsem"
+    }
   ]
- 
 }

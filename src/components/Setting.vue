@@ -4,9 +4,7 @@
     <div>
          Setting
     </div>
-    <div class="ml-3">
-          <button @click="logout"> Logout</button> 
-      </div>
+    
 </template>
 
 <script setup>
