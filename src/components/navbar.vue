@@ -4,7 +4,7 @@
         <div class="px-1" @click="ui.toggleSidebar"> <img v-if="isOpen" @click="sideBarOpen" class="h-6 " src="/src/assets/arrow-right-solid-full.svg" alt=""> </div>
         <div>
             
-             <p >Tasks</p> 
+             <p class="text-2xl font-bold text-blue-700" >T.M</p> 
         </div>
         <div class="w-full flex justify-center">
              <input class=" w-28 mx-2 border px-2 border-gray-300 2xl:text-2xl rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none" type="text">

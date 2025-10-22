@@ -1,49 +1,93 @@
 <template>
-  <aside v-if="ui.isSidebarOpen" class="fixed h-screen w-64 bg-gray-800 text-white p-4 shadow-lg transition-all">
+  <!-- Sidebar -->
+  <aside
+    v-if="ui.isSidebarOpen"
+    class="fixed h-screen w-64 bg-gray-800 text-white p-4 shadow-lg z-40 flex flex-col justify-between "
+  >
+    
+    <div>
+      <h2 class="text-lg font-semibold mb-6 tracking-wide">Task Master</h2>
 
-    <!-- <h2 class="text-xl mb-4">Projects </h2> -->
-    <div class="flex flex-col justify-items-start">
-      <RouterLink to="/home" class="px-3 py-2 rounded hover:bg-gray-700" active-class="bg-blue-600">
-        <span @click="ui.toggleSidebar"> Dashboard</span>
+      <RouterLink
+        to="/home"
+        class="block px-3 py-2 rounded hover:bg-gray-700 transition"
+        active-class="bg-blue-600"
+      >
+        Dashboard
       </RouterLink>
 
-      <div class="ml-3">
-        <span @click="toggelList">Projects</span>
-        <ul v-if="isClicked" class="ml-5">
-          <li v-for="project in projectStore.projects" :key="project.id" class="">
-            <div>
-              <p class="font-bold">{{ project.name }}</p>
-              
-            </div>
+      <div class="mt-2">
+        <span
+          @click="toggleList"
+          class="block px-3 py-2 rounded hover:bg-gray-700 cursor-pointer select-none"
+        >
+          Projects
+        </span>
+
+        <ul
+          v-if="isClicked"
+          class="ml-4 mt-1 space-y-1 transition-all"
+        >
+          <li
+            v-for="project in projectStore.projects"
+            :key="project.id"
+            class="px-2 py-1 rounded hover:bg-gray-700 text-sm "
+          >
+            {{ project.name }}
           </li>
         </ul>
-          
       </div>
 
-      <RouterLink to="/Setting" class="px-3 py-2 rounded hover:bg-gray-700" active-class="bg-blue-600">
-        <span @click="ui.toggleSidebar"> Setting</span>
+      <RouterLink
+        to="/setting"
+        class="block mt-4 px-3 py-2 rounded hover:bg-gray-700 transition"
+        active-class="bg-blue-600"
+      >
+        Setting
       </RouterLink>
-      <div class="ml-3">
-        <button @click="logout"> Logout</button>
-      </div>
+    </div>
 
+  
+    <div class="border-t border-gray-700 ">
+      <button
+        @click="logout"
+        class=" text-left px-3 pt-2 mb-8 rounded hover:bg-red-600 transition"
+      >
+        Logout
+      </button>
     </div>
   </aside>
 </template>
 <script setup>
-import { RouterLink } from 'vue-router';
-import { useRouter } from 'vue-router';
-import { useUiStore } from '@/stores/usenavbar';
-import { ref } from 'vue';
-import { useProjectStore } from '@/stores/projectStore'
+import { RouterLink, useRouter } from "vue-router";
+import { ref ,watch} from "vue";
+import { useUiStore } from "@/stores/usenavbar";
+import { useProjectStore } from "@/stores/projectStore";
 
-const projectStore = useProjectStore()
-const ui = useUiStore()
 
-const router = useRouter()
-let isClicked = ref(false)
+const router = useRouter();
+const ui = useUiStore();
+const projectStore = useProjectStore();
 
-function toggelList() {
-  isClicked.value = !isClicked.value
+const isClicked = ref(false);
+
+function toggleList() {
+  isClicked.value = !isClicked.value;
 }
+
+function logout() {
+  if (window.confirm("Do you want to log out?")) {
+    localStorage.clear();
+    projectStore.projects = [];
+    ui.isSidebarOpen = false;
+    router.push("/").then(() => window.location.reload());
+  }
+}
+
+
+watch(
+  () => ui.isSidebarOpen,
+  (open) => {
+    document.body.style.overflow = open ? 'hidden' : ''
+  })
 </script>

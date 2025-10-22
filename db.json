@@ -5,23 +5,44 @@
       "name": "fahad",
       "email": "fahad@gmail.com",
       "password": "12345"
+    },
+    {
+      "id": "3fe0",
+      "name": "hassan",
+      "email": "hassan@gmail.com",
+      "password": "123456"
     }
   ],
   "projects": [
     {
-      "id": "cf3c",
-      "name": "fahad",
-      "Description": "hello"
+      "id": "3fed",
+      "name": "project 3",
+      "desc": "project 3"
     },
     {
-      "id": "3e24",
-      "name": "hassan",
-      "Description": "bye bye"
+      "id": "8109",
+      "name": "project 3",
+      "desc": "task manager"
+    }
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "projectId": "3fed",
+      "title": "Setup UI",
+      "status": "pending"
     },
     {
-      "id": "2696",
-      "name": "Project 3",
-      "Description": "loram ipsem"
+      "id": 2,
+      "projectId": "3fed",
+      "title": "API Integration",
+      "status": "in-progress"
+    },
+    {
+      "id": 3,
+      "projectId": "3fed",
+      "title": "Testing",
+      "status": "completed"
     }
   ]
 }
